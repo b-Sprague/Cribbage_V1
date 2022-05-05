@@ -6,73 +6,119 @@ using System.Threading.Tasks;
 
 namespace Cribbage_V1
 {
-    class Board
+    public class Board
     {
-        public static void new_Board()
+        private int playerNum;
+
+        public void SetUp(int players)
         {
-            #region Horizontal Boundaries
-            B_Horizontal(0, 2, "-", 54);
+            playerNum = players;
+        }
 
-            B_Horizontal(0, 7, "-", 49);
-            B_Horizontal(0, 13, "-", 49);
+        public void SetBoard(List<Player> PlayerList, int startX, int startY)
+        {
+            string startArea = "| . . | ";
+            string endZone = ". | ";
+            string row_H = ". . . . .";
+            string border_H = "=" ;
 
-            B_Horizontal(0, 18, "-", 54);
+            Console.Clear();
+
+            #region Upper board
+            // Draw upper border
+            Console.SetCursorPosition(startX, startY - 1);
+            for (int i = 0; i < 150; i++)
+                Console.Write(border_H);
+
+            Console.Write(@"\");
+
+            // Draw starting area + horizontal strip
+            for (int i = 0; i < playerNum; i++)
+            {
+                Console.SetCursorPosition(startX, startY + i);
+                Console.Write(startArea);
+
+                for (int j = 0; j < 11; j++)
+                {
+                    Console.Write(row_H + " | ");
+                }
+                Console.WriteLine(row_H + @" \");
+            }
+
+            // Draw lower border
+            Console.SetCursorPosition(startX, startY + playerNum);
+            for (int i = 0; i < 150; i++)
+                Console.Write(border_H);
+
+            Console.Write(@"\");
+
+            // Draw line numbers
+            for (int i = 1; i < 13; i++)
+            {
+                Console.SetCursorPosition((startX + 6) + (12 * i), startY + playerNum + 1);
+                Console.Write(5 * i);
+            }
             #endregion
 
-            #region Horizontal Traacks
-            B_Horizontal_Track(0, 4, " ", 50, ConsoleColor.Red);
-            B_Horizontal_Track(0, 5, " ", 50, ConsoleColor.Green);
+            #region Lower board
+            // Draw upper secondary border
+            Console.SetCursorPosition(startX, startY + (playerNum + 4));
+            Console.Write(@"\");
 
-            B_Horizontal_Track(4, 9, " ", 11, ConsoleColor.Red);
-            B_Horizontal_Track(4, 10, " ", 11, ConsoleColor.Green);
+            for (int i = 0; i < 148; i++)
+                Console.Write(border_H);
 
-            B_Horizontal_Track(4, 16, " ", 46, ConsoleColor.Red);
-            B_Horizontal_Track(4, 15, " ", 46, ConsoleColor.Green);
+            // Draw endzone + horizontal strip
+            for (int i = 0; i < playerNum; i++)
+            {
+                Console.SetCursorPosition(startX, startY + (playerNum + 5 + i));
+                Console.Write(@"\ ");
+
+                for (int j = 0; j < 12; j++)
+                {
+                    Console.Write(row_H + " | ");
+                }
+                Console.WriteLine(endZone);
+            }
+
+            // Draw lower secondary border
+            if(playerNum == 2)
+                Console.SetCursorPosition(startX, startY + (playerNum + 7));
+            else
+                Console.SetCursorPosition(startX, startY + (playerNum + 8));
+
+            Console.Write(@"\");
+
+            for (int i = 0; i < 148; i++)
+                Console.Write(border_H);
+
+            // Draw line numbers, cont.
+            for (int i = 0; i < 13; i++)
+            {
+                if(playerNum == 2)
+                    Console.SetCursorPosition((startX - 1) + (12 * i), startY + (playerNum + 8));
+                else
+                    Console.SetCursorPosition((startX - 1) + (12 * i), startY + (playerNum + 9));
+
+                Console.Write(60 + (5 * i));
+            }
             #endregion
-        }
 
-        public static void B_Horizontal(int x, int y, string wallV, int end)
-        {
-            int NewX = x;
-            int Counter = 0;
-
-            while (true)
+            //Take player peg coords and colors and apply to board
+            foreach (Player player in PlayerList)
             {
-                Console.SetCursorPosition(NewX, y);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(wallV);
-
-                if (Counter == end)
-                    break;
-
-                else
+                if (player.playerName != "Crib")
                 {
-                    NewX++;
-                    Counter++;
+                    Console.ForegroundColor = player.pegColor;
+
+                    // Draws the pegs on the board
+                        Console.SetCursorPosition(player.peg_2[0], player.peg_2[1]);
+                        Console.WriteLine("2");
+
+                        Console.SetCursorPosition(player.peg_1[0], player.peg_1[1]);
+                        Console.WriteLine("1");
                 }
             }
-        }
-
-        public static void B_Horizontal_Track(int x, int y, string wallV, int end, ConsoleColor color)
-        {
-            int NewX = x;
-            int Counter = 0;
-
-            while (true)
-            {
-                Console.SetCursorPosition(NewX, y);
-                Console.BackgroundColor = color;
-                Console.WriteLine(wallV);
-
-                if (Counter == end)
-                    break;
-
-                else
-                {
-                    NewX++;
-                    Counter++;
-                }
-            }
-        }
+        }        
     }
 }
