@@ -1,0 +1,9 @@
+c:\users\linkf\onedrive\documents\visual studio 2015\Projects\Cribbage_V1\Cribbage_V1\bin\Debug\Cribbage_V1.exe.config
+c:\users\linkf\onedrive\documents\visual studio 2015\Projects\Cribbage_V1\Cribbage_V1\bin\Debug\Cribbage_V1.exe
+c:\users\linkf\onedrive\documents\visual studio 2015\Projects\Cribbage_V1\Cribbage_V1\bin\Debug\Cribbage_V1.pdb
+c:\users\linkf\onedrive\documents\visual studio 2015\Projects\Cribbage_V1\Cribbage_V1\obj\Debug\Cribbage_V1.csprojResolveAssemblyReference.cache
+c:\users\linkf\onedrive\documents\visual studio 2015\Projects\Cribbage_V1\Cribbage_V1\obj\Debug\Cribbage_V1.exe
+c:\users\linkf\onedrive\documents\visual studio 2015\Projects\Cribbage_V1\Cribbage_V1\obj\Debug\Cribbage_V1.pdb
+C:\Users\Brennan\Documents\Visual Studio 2015\Projects\Cribbage_V1\Cribbage_V1\bin\Debug\Cribbage_V1.exe.config
+C:\Users\Brennan\Documents\Visual Studio 2015\Projects\Cribbage_V1\Cribbage_V1\obj\Debug\Cribbage_V1.exe
+C:\Users\Brennan\Documents\Visual Studio 2015\Projects\Cribbage_V1\Cribbage_V1\obj\Debug\Cribbage_V1.pdb
